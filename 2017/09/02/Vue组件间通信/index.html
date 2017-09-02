@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://lovermaker.github.io/blogs">
   <title>Vue组件间通信 | 诗意情缘</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Vue组件间通信1. 父子通信方法1.1 props传值12345678910111213141516// Parent.vue&amp;lt;template&amp;gt;    &amp;lt;child :title=&quot;title&quot;&amp;gt;&amp;lt;/child&amp;gt;&amp;lt;template&amp;gt;&amp;lt;script&amp;gt;    import Child from &apos;./Child&apos;;    export d">
+  <meta name="description" content="将页面拆为多个组件，组件间的通信往往成为难题。简单的应用有可能你并不需要vuex来管理你的状态，熟悉Vue的各种组件间通信，可大大提高开发效率。本文详细说说非vuex的vue组件间通信方法。 1. 父子通信方法1.1 props传值12345678910111213141516// Parent.vue&amp;lt;template&amp;gt;    &amp;lt;child :title=&quot;title&quot;&amp;gt;">
 <meta name="keywords" content="Vue">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue组件间通信">
 <meta property="og:url" content="http://lovermaker.github.io/blogs/2017/09/02/Vue组件间通信/index.html">
 <meta property="og:site_name" content="诗意情缘">
-<meta property="og:description" content="Vue组件间通信1. 父子通信方法1.1 props传值12345678910111213141516// Parent.vue&amp;lt;template&amp;gt;    &amp;lt;child :title=&quot;title&quot;&amp;gt;&amp;lt;/child&amp;gt;&amp;lt;template&amp;gt;&amp;lt;script&amp;gt;    import Child from &apos;./Child&apos;;    export d">
-<meta property="og:updated_time" content="2017-09-02T04:51:25.000Z">
+<meta property="og:description" content="将页面拆为多个组件，组件间的通信往往成为难题。简单的应用有可能你并不需要vuex来管理你的状态，熟悉Vue的各种组件间通信，可大大提高开发效率。本文详细说说非vuex的vue组件间通信方法。 1. 父子通信方法1.1 props传值12345678910111213141516// Parent.vue&amp;lt;template&amp;gt;    &amp;lt;child :title=&quot;title&quot;&amp;gt;">
+<meta property="og:updated_time" content="2017-09-02T04:57:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue组件间通信">
-<meta name="twitter:description" content="Vue组件间通信1. 父子通信方法1.1 props传值12345678910111213141516// Parent.vue&amp;lt;template&amp;gt;    &amp;lt;child :title=&quot;title&quot;&amp;gt;&amp;lt;/child&amp;gt;&amp;lt;template&amp;gt;&amp;lt;script&amp;gt;    import Child from &apos;./Child&apos;;    export d">
+<meta name="twitter:description" content="将页面拆为多个组件，组件间的通信往往成为难题。简单的应用有可能你并不需要vuex来管理你的状态，熟悉Vue的各种组件间通信，可大大提高开发效率。本文详细说说非vuex的vue组件间通信方法。 1. 父子通信方法1.1 props传值12345678910111213141516// Parent.vue&amp;lt;template&amp;gt;    &amp;lt;child :title=&quot;title&quot;&amp;gt;">
   
     <link rel="alternative" href="/atom.xml" title="诗意情缘" type="application/atom+xml">
   
@@ -174,7 +174,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Vue组件间通信"><a href="#Vue组件间通信" class="headerlink" title="Vue组件间通信"></a>Vue组件间通信</h2><h3 id="1-父子通信方法"><a href="#1-父子通信方法" class="headerlink" title="1. 父子通信方法"></a>1. 父子通信方法</h3><h4 id="1-1-props传值"><a href="#1-1-props传值" class="headerlink" title="1.1 props传值"></a>1.1 props传值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Parent.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">    &lt;child :title=<span class="string">"title"</span>&gt;&lt;/child&gt;</div><div class="line">&lt;template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">        name: <span class="string">'Prarent'</span>,</div><div class="line">        data() &#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                title: <span class="string">'test'</span></div><div class="line">            &#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+        <p>将页面拆为多个组件，组件间的通信往往成为难题。简单的应用有可能你并不需要vuex来管理你的状态，熟悉Vue的各种组件间通信，可大大提高开发效率。本文详细说说非vuex的vue组件间通信方法。</p>
+<h3 id="1-父子通信方法"><a href="#1-父子通信方法" class="headerlink" title="1. 父子通信方法"></a>1. 父子通信方法</h3><h4 id="1-1-props传值"><a href="#1-1-props传值" class="headerlink" title="1.1 props传值"></a>1.1 props传值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Parent.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">    &lt;child :title=<span class="string">"title"</span>&gt;&lt;/child&gt;</div><div class="line">&lt;template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">        name: <span class="string">'Prarent'</span>,</div><div class="line">        data() &#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                title: <span class="string">'test'</span></div><div class="line">            &#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Child.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">   &lt;div&gt;&#123;&#123;title&#125;&#125;&lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">      name: <span class="string">'Child'</span>,</div><div class="line">      props: &#123;</div><div class="line">        title: <span class="built_in">String</span></div><div class="line">      &#125;,</div><div class="line">      data() &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">           title: <span class="string">'test'</span></div><div class="line">        &#125;;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
 <p>父组件Parent将’test’字符串传给子组件的参数title, 当props值改变时，子组件的值也会相应的变化。</p>
 <p>通常父子组件间的通信需要遵循单向数据流，也就是说父组件可以修改传递给子组件的数据，而子组件不能修改props传入的数据。</p>
@@ -295,16 +296,6 @@
 </article>
 
   
-<nav id="article-nav">
-  
-  
-    <a href="/blogs/2017/09/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
