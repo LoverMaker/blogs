@@ -155,6 +155,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Hexo命令指北" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##hexo命令指北</p>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">npm</span> install hexo -g <span class="comment">#安装</span></div><div class="line"><span class="built_in">npm</span> update hexo -g <span class="comment">#升级</span></div><div class="line">hexo init <span class="comment">#初始化</span></div></pre></td></tr></table></figure>
+<p>###简写<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo n <span class="string">"我的博客"</span> == hexo new <span class="string">"我的博客"</span> #新建文章</div><div class="line">hexo p == hexo publish</div><div class="line">hexo g == hexo generate#生成</div><div class="line">hexo s == hexo<span class="built_in"> server </span>#启动服务预览</div><div class="line">hexo d == hexo deploy#部署</div></pre></td></tr></table></figure></p>
+<p>###服务器<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">hexo<span class="built_in"> server </span>#Hexo 会监视文件变动并自动更新，您无须重启服务器。</div><div class="line">hexo<span class="built_in"> server </span>-s #静态模式</div><div class="line">hexo<span class="built_in"> server </span>-p 5000 #更改端口</div><div class="line">hexo<span class="built_in"> server </span>-i 192.168.1.1 #自定义 IP</div><div class="line">hexo clean #清除缓存 网页正常情况下可以忽略此条命令</div><div class="line">hexo g #生成静态网页</div><div class="line">hexo d #开始部署</div></pre></td></tr></table></figure></p>
+<p>###监视文件变动<br><figure class="highlight verilog"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">generate</span> #使用 Hexo 生成静态文件快速而且简单</div><div class="line">hexo <span class="keyword">generate</span> --watch #监视文件变动</div></pre></td></tr></table></figure></p>
+<p>###完成后部署<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">两个命令的作用是相同的</div><div class="line">hexo generate --deploy</div><div class="line">hexo deploy --generate</div><div class="line"></div><div class="line"></div><div class="line">hexo deploy -g</div><div class="line">hexo<span class="built_in"> server </span>-g</div></pre></td></tr></table></figure></p>
+<p>###草稿<br><figure class="highlight accesslog"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo publish <span class="string">[layout]</span> &lt;title&gt;</div></pre></td></tr></table></figure></p>
+<p>###模版<br><figure class="highlight axapta"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">hexo <span class="keyword">new</span> <span class="string">"postName"</span> <span class="meta">#新建文章</span></div><div class="line">hexo <span class="keyword">new</span> page <span class="string">"pageName"</span> <span class="meta">#新建页面</span></div><div class="line">hexo generate <span class="meta">#生成静态页面至public目录</span></div><div class="line">hexo <span class="keyword">server</span> <span class="meta">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line">hexo deploy <span class="meta">#将.deploy目录部署到GitHub</span></div><div class="line">hexo <span class="keyword">new</span> [layout] &lt;title&gt;</div><div class="line">hexo <span class="keyword">new</span> photo <span class="string">"My Gallery"</span></div><div class="line">hexo <span class="keyword">new</span> <span class="string">"Hello World"</span> --lang tw</div></pre></td></tr></table></figure></p>
+<p>变量    描述<br>layout    布局<br>title    标题<br>date    文件建立日期</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">title: 使用Hexo搭建个人博客</div><div class="line">layout: post</div><div class="line">date: 2014<span class="string">-03</span><span class="string">-03</span> 19:07:43</div><div class="line">comments: true</div><div class="line">categories: Blog</div><div class="line"><span class="keyword">tags:</span> [Hexo]</div><div class="line">keywords: Hexo, Blog</div><div class="line">description: 生命在于折腾，又把博客折腾到Hexo了。给Hexo点赞。</div></pre></td></tr></table></figure>
+<p>###模版（Scaffold）</p>
+<p><code>hexo new photo &quot;My Gallery&quot;</code><br><figure class="highlight dos"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">变量	描述</div><div class="line">layout	布局</div><div class="line"><span class="built_in">title</span>	标题</div><div class="line"><span class="built_in">date</span>	文件建立日期</div></pre></td></tr></table></figure></p>
+<p>###设置文章摘要</p>
+<p>以上是文章摘要 <code>&lt;!--more--&gt;</code> 以下是余下全文</p>
+<p>###写作</p>
+<p><code>hexo new page &lt;title&gt;</code><br><code>hexo new post &lt;title&gt;</code><br>变量    描述<br>:title    标题<br>:year    建立的年份（4 位数）<br>:month    建立的月份（2 位数）<br>:i_month    建立的月份（去掉开头的零）<br>:day    建立的日期（2 位数）<br>:i_day    建立的日期（去掉开头的零）</p>
+<p>###推送到服务器上</p>
+<p>hexo n #写文章<br>hexo g #生成<br>hexo d #部署 #可与hexo g合并为 hexo d -g</p>
+<p>###报错</p>
+<p>####1.找不到git部署</p>
+<p>ERROR Deployer not found: git<br>解决方法<br><code>npm install hexo-deployer-git --save</code></p>
+<p>####2.部署类型设置git</p>
+<p>hexo 3.0 部署类型不再是github，_config.yml 中修改<br><figure class="highlight dts"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta"># Deployment</span></div><div class="line"><span class="meta">## Docs: http:<span class="comment">//hexo.io/docs/deployment.html</span></span></div><div class="line"><span class="symbol">deploy:</span></div><div class="line"><span class="symbol">  type:</span> git</div><div class="line"><span class="symbol">  repository:</span> git@***.github.com:***<span class="comment">/***.github.io.git</span></div><div class="line"><span class="comment">  branch: master</span></div></pre></td></tr></table></figure></p>
+<p>####3. xcodebuild</p>
+<p>xcode-select: error: tool ‘xcodebuild’ requires Xcode, but active developer directory ‘/Library/Developer/CommandLineTools’ is a command line tools instance<br>npm install bcrypt</p>
+<p>####4. RSS不显示</p>
+<p>安装RSS插件</p>
+<p>npm install hexo-generator-feed –save<br>开启RSS功能</p>
+<p>编辑hexo/_config.yml，添加如下代码：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rss: /atom.<span class="keyword">xml</span> <span class="title">#rss</span>地址  默认即可</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/blogs/2017/10/15/Hexo命令指北/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Vue组件间通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

@@ -6,19 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://lovermaker.github.io/blogs">
-  <title>Vue组件间通信 | 诗意情缘</title>
+  <title>Archives: 2017/10 | 诗意情缘</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将页面拆为多个组件，组件间的通信往往成为难题。简单的应用有可能你并不需要vuex来管理你的状态，熟悉Vue的各种组件间通信，可大大提高开发效率。本文详细说说非vuex的vue组件间通信方法。 1. 父子通信方法1.1 props传值12345678910111213141516// Parent.vue&amp;lt;template&amp;gt;    &amp;lt;child :title=&quot;title&quot;&amp;gt;">
-<meta name="keywords" content="Vue">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Vue组件间通信">
-<meta property="og:url" content="http://lovermaker.github.io/blogs/2017/09/02/Vue组件间通信/index.html">
+  <meta name="description" content="就职于阿里。擅长各项前端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
+<meta name="keywords" content="前端,js">
+<meta property="og:type" content="website">
+<meta property="og:title" content="诗意情缘">
+<meta property="og:url" content="http://lovermaker.github.io/blogs/archives/2017/10/index.html">
 <meta property="og:site_name" content="诗意情缘">
-<meta property="og:description" content="将页面拆为多个组件，组件间的通信往往成为难题。简单的应用有可能你并不需要vuex来管理你的状态，熟悉Vue的各种组件间通信，可大大提高开发效率。本文详细说说非vuex的vue组件间通信方法。 1. 父子通信方法1.1 props传值12345678910111213141516// Parent.vue&amp;lt;template&amp;gt;    &amp;lt;child :title=&quot;title&quot;&amp;gt;">
-<meta property="og:updated_time" content="2017-09-02T04:57:52.000Z">
+<meta property="og:description" content="就职于阿里。擅长各项前端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Vue组件间通信">
-<meta name="twitter:description" content="将页面拆为多个组件，组件间的通信往往成为难题。简单的应用有可能你并不需要vuex来管理你的状态，熟悉Vue的各种组件间通信，可大大提高开发效率。本文详细说说非vuex的vue组件间通信方法。 1. 父子通信方法1.1 props传值12345678910111213141516// Parent.vue&amp;lt;template&amp;gt;    &amp;lt;child :title=&quot;title&quot;&amp;gt;">
+<meta name="twitter:title" content="诗意情缘">
+<meta name="twitter:description" content="就职于阿里。擅长各项前端技能，深入研究移动端开发与前端性能。非专业视觉设计师。此为博客一枚。">
   
     <link rel="alternative" href="/atom.xml" title="诗意情缘" type="application/atom+xml">
   
@@ -154,188 +153,43 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Vue组件间通信" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
+            
+  
+  
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Vue组件间通信
-    </h1>
-  
-
-        
-        <a href="/blogs/2017/09/02/Vue组件间通信/" class="archive-article-date">
-  	<time datetime="2017-09-02T02:27:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-02</time>
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/blogs/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/blogs/2017/10/15/Hexo命令指北/" class="archive-article-date">
+  	<time datetime="2017-10-15T13:55:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-15</time>
 </a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>将页面拆为多个组件，组件间的通信往往成为难题。简单的应用有可能你并不需要vuex来管理你的状态，熟悉Vue的各种组件间通信，可大大提高开发效率。本文详细说说非vuex的vue组件间通信方法。</p>
-<h3 id="1-父子通信方法"><a href="#1-父子通信方法" class="headerlink" title="1. 父子通信方法"></a>1. 父子通信方法</h3><h4 id="1-1-props传值"><a href="#1-1-props传值" class="headerlink" title="1.1 props传值"></a>1.1 props传值</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Parent.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">    &lt;child :title=<span class="string">"title"</span>&gt;&lt;/child&gt;</div><div class="line">&lt;template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">        name: <span class="string">'Prarent'</span>,</div><div class="line">        data() &#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                title: <span class="string">'test'</span></div><div class="line">            &#125;;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Child.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">   &lt;div&gt;&#123;&#123;title&#125;&#125;&lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">      name: <span class="string">'Child'</span>,</div><div class="line">      props: &#123;</div><div class="line">        title: <span class="built_in">String</span></div><div class="line">      &#125;,</div><div class="line">      data() &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">           title: <span class="string">'test'</span></div><div class="line">        &#125;;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<p>父组件Parent将’test’字符串传给子组件的参数title, 当props值改变时，子组件的值也会相应的变化。</p>
-<p>通常父子组件间的通信需要遵循单向数据流，也就是说父组件可以修改传递给子组件的数据，而子组件不能修改props传入的数据。</p>
-<p>如果在子组件试图修改props的数据，Vue会给出警告。<br>需要对一个 prop 进行『双向绑定』, 从 2.3.0 起Vue重新引入了 .sync 修饰符，但是这次它只是作为一个编译时的语法糖存在。它会被扩展为一个自动更新父组件属性的 v-on 侦听器。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;child :title.sync=<span class="string">"bar"</span>&gt;&lt;/comp&gt;</div></pre></td></tr></table></figure></p>
-<p>会被扩展为：<br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;comp <span class="symbol">:foo=<span class="string">"bar"</span></span> <span class="variable">@update</span><span class="symbol">:title=<span class="string">"val =&gt; bar = val"</span>&gt;&lt;/comp&gt;</span></div></pre></td></tr></table></figure></p>
-<p>当子组件需要更新 foo 的值时，它需要显式地触发一个更新事件：<br><figure class="highlight haxe"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">this</span>.$emit(<span class="string">'update:title'</span>, <span class="keyword">new</span><span class="type">Value</span>)</div></pre></td></tr></table></figure></p>
-<h4 id="1-2-事件通知"><a href="#1-2-事件通知" class="headerlink" title="1.2. 事件通知"></a>1.2. 事件通知</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Parent.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">    &lt;child :title=<span class="string">"title"</span> @title-click=<span class="string">'onClick'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span></div><div class="line">&lt;template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">        name: <span class="string">'Prarent'</span>,</div><div class="line">        data() &#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                title: <span class="string">'test'</span></div><div class="line">            &#125;;</div><div class="line">        &#125;,</div><div class="line">        methods: &#123;</div><div class="line">          onClick(title) &#123;</div><div class="line">            <span class="built_in">console</span>.log(title);</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Child.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">   &lt;button @click=<span class="string">"onClick"</span>&gt;&#123;&#123;title&#125;&#125;&lt;<span class="regexp">/button&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">      name: <span class="string">'Child'</span>,</div><div class="line">      props: &#123;</div><div class="line">        title: <span class="built_in">String</span></div><div class="line">      &#125;,</div><div class="line">      methods: &#123;</div><div class="line">        onClick() &#123;</div><div class="line">          <span class="keyword">this</span>.$emit(<span class="string">'title-click'</span>, <span class="keyword">this</span>.title);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<p>通过在子组件中调用$emit方法（第一个参数是事件名，后面的参数是事件的参数）在父组件中对该子组件监听事件，达到传递将子组件的数据传递给父组件的目的。<br>在示例中，会打印出子组的title的值’test’;</p>
-<h4 id="1-3-props参数回调"><a href="#1-3-props参数回调" class="headerlink" title="1.3 props参数回调"></a>1.3 props参数回调</h4><p>父组件通过向子组件传入一个方法，在子组件中调用方法达到取得子组件数据的目的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Parent.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">    &lt;child :title=<span class="string">"title"</span> :titleClick=<span class="string">'onClick'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span></div><div class="line">&lt;template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">        name: <span class="string">'Prarent'</span>,</div><div class="line">        data() &#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                title: <span class="string">'test'</span></div><div class="line">            &#125;;</div><div class="line">        &#125;,</div><div class="line">        methods: &#123;</div><div class="line">          onClick(title) &#123;</div><div class="line">            <span class="built_in">console</span>.log(title);</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Child.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">   &lt;button @click=<span class="string">"onClick"</span>&gt;&#123;&#123;title&#125;&#125;&lt;<span class="regexp">/button&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">      name: <span class="string">'Child'</span>,</div><div class="line">      props: &#123;</div><div class="line">        titleClick: <span class="built_in">Function</span></div><div class="line">      &#125;,</div><div class="line">      data: &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">          title: <span class="string">'test'</span></div><div class="line">        &#125;;</div><div class="line">      &#125;,</div><div class="line">      methods: &#123;</div><div class="line">        onClick() &#123;</div><div class="line">          <span class="keyword">this</span>.titleClick(<span class="keyword">this</span>.title);</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="1-3-父组件调用子组件方法"><a href="#1-3-父组件调用子组件方法" class="headerlink" title="1.3 父组件调用子组件方法"></a>1.3 父组件调用子组件方法</h4><p>在父组件中指定子组件引用名，可以通过<code>this.$refs[引用名]</code>获取子组件实例，则可通过实例调用子组件方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Parent.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">    &lt;child ref=<span class="string">"child"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">child</span>&gt;</span></span></div><div class="line">&lt;template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</div><div class="line"></div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">        name: <span class="string">'Prarent'</span>,</div><div class="line">        data() &#123;</div><div class="line">            <span class="keyword">return</span> &#123;</div><div class="line">                title: <span class="string">'test'</span></div><div class="line">            &#125;;</div><div class="line">        &#125;,</div><div class="line">        methods: &#123;</div><div class="line">          some(title) &#123;</div><div class="line">            <span class="keyword">this</span>.$refs.child.add();</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Child.vue</span></div><div class="line">&lt;template&gt;</div><div class="line">   &lt;div&gt;&#123;&#123;count&#125;&#125;&lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp">&lt;/</span>template&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">      name: <span class="string">'Child'</span>,</div><div class="line">      data: &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">          count: <span class="number">0</span></div><div class="line">        &#125;;</div><div class="line">      &#125;,</div><div class="line">      methods: &#123;</div><div class="line">        add() &#123;</div><div class="line">          <span class="keyword">this</span>.count += <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
-<h3 id="2-平行组件间通信"><a href="#2-平行组件间通信" class="headerlink" title="2. 平行组件间通信"></a>2. 平行组件间通信</h3><h4 id="2-1-事件总线"><a href="#2-1-事件总线" class="headerlink" title="2.1 事件总线"></a>2.1 事件总线</h4><p>在简单的场景下，使用一个空的 Vue 实例作为中央事件总线<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> bus = <span class="keyword">new</span> Vue()</div></pre></td></tr></table></figure></p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="regexp">//</span> 触发组件 A 中的事件</div><div class="line">bus.<span class="variable">$emit</span>(<span class="string">'id-selected'</span>, <span class="number">1</span>)</div></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 在组件 B 创建的钩子中监听事件</span></div><div class="line">bus.$on(<span class="string">'id-selected'</span>, <span class="function"><span class="keyword">function</span> <span class="params">(id)</span> </span>&#123;</div><div class="line"><span class="comment">// ...</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
-<h4 id="2-2-vuex全局状态管理"><a href="#2-2-vuex全局状态管理" class="headerlink" title="2.2 vuex全局状态管理"></a>2.2 vuex全局状态管理</h4><p>关天vuex状态管理的应用，详见<a href="https://vuex.vuejs.org/zh-cn/" target="_blank" rel="external">vuex文档</a></p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
+    	 
+        <div class="article-info info-on-right">
+          
+          
 
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lovermaker.github.io/blogs/2017/09/02/Vue组件间通信/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/blogs/2017/10/15/Hexo命令指北/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          (no title)
-        
-      </div>
-    </a>
   
   
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
+    
 
 
           </div>
@@ -358,8 +212,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
