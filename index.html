@@ -69,6 +69,68 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-函数柯里化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blogs/2017/10/21/函数柯里化/" class="article-date">
+  <time datetime="2017-10-20T16:00:00.000Z" itemprop="datePublished">2017-10-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blogs/2017/10/21/函数柯里化/">函数柯里化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="函数柯里化"><a href="#函数柯里化" class="headerlink" title="函数柯里化"></a>函数柯里化</h2><p>curry化来源与数学家 Haskell Curry的名字 （编程语言 Haskell也是以他的名字命名）。</p>
+<p>柯里化通常也称部分求值，其含义是给函数分步传递参数，每次传递参数后部分应用参数，并返回一个更具体的函数接受剩下的参数，这中间可嵌套多层这样的接受部分参数函数，直至返回最后结果。<br>因此柯里化的过程是逐步传参，逐步缩小函数的适用范围，逐步求解的过程。</p>
+<p>柯里化一个求和函数</p>
+<p>按照分步求值，我们看一个简单的例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> concat3Words = <span class="function"><span class="keyword">function</span> (<span class="params">a, b, c</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> a+b+c;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> concat3WordsCurrying = <span class="function"><span class="keyword">function</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">b</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params">c</span>) </span>&#123;</div><div class="line">            <span class="keyword">return</span> a+b+c;</div><div class="line">        &#125;;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.log(concat3Words(<span class="string">"foo "</span>,<span class="string">"bar "</span>,<span class="string">"baza"</span>));            <span class="comment">// foo bar baza</span></div><div class="line"><span class="built_in">console</span>.log(concat3WordsCurrying(<span class="string">"foo "</span>));                  <span class="comment">// [Function]</span></div><div class="line"><span class="built_in">console</span>.log(concat3WordsCurrying(<span class="string">"foo "</span>)(<span class="string">"bar "</span>)(<span class="string">"baza"</span>));  <span class="comment">// foo bar baza</span></div></pre></td></tr></table></figure>
+<p>那么现在我们更进一步，如果要求可传递的参数不止3个，可以传任意多个参数，当不传参数时输出结果？</p>
+<p>首先一个简单实现<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span>(<span class="params">items</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> items.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> a+b</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.log(add([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]));</div></pre></td></tr></table></figure></p>
+<p>但如果要求把每个数乘以10之后再相加，那么：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> add = <span class="function"><span class="keyword">function</span> (<span class="params">items,multi</span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> items.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> item*multi;</div><div class="line">    &#125;).reduce(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> a + b</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"><span class="built_in">console</span>.log(add([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>],<span class="number">10</span>));</div></pre></td></tr></table></figure></p>
+<p>好在有 map 和 reduce 函数，假如按照这个模式，现在要把每项加1,再汇总，那么我们需要更换map中的函数。</p>
+<p>下面来介绍一下柯里化的实现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> adder = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> _args = [];</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> _args.reduce(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</div><div class="line">                <span class="keyword">return</span> a + b;</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">        [].push.apply(_args, [].slice.call(<span class="built_in">arguments</span>));</div><div class="line">        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> sum = adder();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(sum);     <span class="comment">// Function</span></div><div class="line"></div><div class="line">sum(<span class="number">100</span>,<span class="number">200</span>)(<span class="number">300</span>);    <span class="comment">// 调用形式灵活，一次调用可输入一个或者多个参数，并且支持链式调用</span></div><div class="line">sum(<span class="number">400</span>);</div><div class="line"><span class="built_in">console</span>.log(sum());   <span class="comment">// 1000 （加总计算）</span></div></pre></td></tr></table></figure></p>
+<h3 id="通用的柯里化函数"><a href="#通用的柯里化函数" class="headerlink" title="通用的柯里化函数"></a>通用的柯里化函数</h3><p>更典型的柯里化会把最后一次的计算封装进一个函数中，再把这个函数作为参数传入柯里化函数，这样即清晰，又灵活。<br>例如 每项乘以10, 我们可以把处理函数作为参数传入：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> currying = <span class="function"><span class="keyword">function</span> (<span class="params">fn</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> _args = [];</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> fn.apply(<span class="keyword">this</span>, _args);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">Array</span>.prototype.push.apply(_args, [].slice.call(<span class="built_in">arguments</span>));</div><div class="line">        <span class="keyword">return</span> <span class="built_in">arguments</span>.callee;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> multi=<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> total = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, c; c = <span class="built_in">arguments</span>[i++];) &#123;</div><div class="line">        total += c;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> total;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> sum = currying(multi);</div><div class="line"></div><div class="line">sum(<span class="number">100</span>,<span class="number">200</span>)(<span class="number">300</span>);</div><div class="line">sum(<span class="number">400</span>);</div><div class="line"><span class="built_in">console</span>.log(sum());     <span class="comment">// 1000  （空白调用时才真正计算）</span></div></pre></td></tr></table></figure></p>
+<h3 id="柯里化的作用"><a href="#柯里化的作用" class="headerlink" title="柯里化的作用"></a>柯里化的作用</h3><ul>
+<li>延迟计算。上面的例子已经比较好低说明了。</li>
+<li>参数复用。当在多次调用同一个函数，并且传递的参数绝大多数是相同的，那么该函数可能是一个很好的柯里化候选。</li>
+<li>动态创建函数。这可以是在部分计算出结果后，在此基础上动态生成新的函数处理后面的业务，这样省略了重复计算。或者可以通过将要传入调用函数的参数子集，部分应用到函数中，从而动态创造出一个新函数，这个新函数保存了重复传入的参数（以后不必每次都传）。例如，事件浏览器添加事件的辅助方法：</li>
+</ul>
+<figure class="highlight fortran"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var addEvent = <span class="function"><span class="keyword">function</span><span class="params">(el, type, fn, capture)</span></span> &#123;</div><div class="line">     <span class="keyword">if</span> (window.addEventListener) &#123;</div><div class="line">         el.addEventListener(<span class="keyword">type</span>, <span class="function"><span class="keyword">function</span><span class="params">(e)</span></span> &#123;</div><div class="line">             fn.<span class="keyword">call</span>(el, e);</div><div class="line">         &#125;, capture);</div><div class="line">     &#125; <span class="keyword">else</span> <span class="keyword">if</span> (window.attachEvent) &#123;</div><div class="line">         el.attachEvent(<span class="string">"on"</span> + <span class="keyword">type</span>, <span class="function"><span class="keyword">function</span><span class="params">(e)</span></span> &#123;</div><div class="line">             fn.<span class="keyword">call</span>(el, e);</div><div class="line">         &#125;);</div><div class="line">     &#125;</div><div class="line"> &#125;;</div></pre></td></tr></table></figure>
+<p> 每次添加事件处理都要执行一遍 if…else…，其实在一个浏览器中只要一次判定就可以了，把根据一次判定之后的结果动态生成新的函数，以后就不必重新计算。<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">var addEvent = (<span class="name">function</span>()&#123;</div><div class="line">    if (<span class="name">window</span>.addEventListener) &#123;</div><div class="line">        return function(<span class="name">el</span>, sType, fn, capture) &#123;</div><div class="line">            el.addEventListener(<span class="name">sType</span>, function(<span class="name">e</span>) &#123;</div><div class="line">                fn.call(<span class="name">el</span>, e)<span class="comment">;</span></div><div class="line">            &#125;, (<span class="name">capture</span>))<span class="comment">;</span></div><div class="line">        &#125;<span class="comment">;</span></div><div class="line">    &#125; else if (<span class="name">window</span>.attachEvent) &#123;</div><div class="line">        return function(<span class="name">el</span>, sType, fn, capture) &#123;</div><div class="line">            el.attachEvent(<span class="string">"on"</span> + sType, function(<span class="name">e</span>) &#123;</div><div class="line">                fn.call(<span class="name">el</span>, e)<span class="comment">;</span></div><div class="line">            &#125;)<span class="comment">;</span></div><div class="line">        &#125;<span class="comment">;</span></div><div class="line">    &#125;</div><div class="line">&#125;)()<span class="comment">;</span></div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://lovermaker.github.io/blogs/2017/10/21/函数柯里化/" data-id="cj91iqvai0003irxpd8d42nng" class="article-share-link" data-share="baidu" data-title="函数柯里化">Share</a>
+      
+
+      
+        <a href="http://lovermaker.github.io/blogs/2017/10/21/函数柯里化/#ds-thread" class="article-comment-link">Comments</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blogs/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Babel简介及使用" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blogs/2017/10/16/Babel简介及使用/" class="article-date">
@@ -161,7 +223,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://lovermaker.github.io/blogs/2017/10/16/Babel简介及使用/" data-id="cj8tjuqii0003mjxp6powddev" class="article-share-link" data-share="baidu" data-title="Babel简介及使用">Share</a>
+        <a data-url="http://lovermaker.github.io/blogs/2017/10/16/Babel简介及使用/" data-id="cj91iqva10000irxpxcg1bfqq" class="article-share-link" data-share="baidu" data-title="Babel简介及使用">Share</a>
       
 
       
@@ -228,7 +290,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://lovermaker.github.io/blogs/2017/10/15/Hexo命令指北/" data-id="cj8tjuqi60000mjxphj1t3drd" class="article-share-link" data-share="baidu" data-title="hexo命令指北">Share</a>
+        <a data-url="http://lovermaker.github.io/blogs/2017/10/15/Hexo命令指北/" data-id="cj91iqva90001irxpz73ox7fn" class="article-share-link" data-share="baidu" data-title="hexo命令指北">Share</a>
       
 
       
@@ -292,7 +354,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://lovermaker.github.io/blogs/2017/09/02/Vue组件间通信/" data-id="cj8tjuqic0001mjxpw9viy8vv" class="article-share-link" data-share="baidu" data-title="Vue组件间通信">Share</a>
+        <a data-url="http://lovermaker.github.io/blogs/2017/09/02/Vue组件间通信/" data-id="cj91iqval0004irxp39ofwr3a" class="article-share-link" data-share="baidu" data-title="Vue组件间通信">Share</a>
       
 
       
@@ -320,7 +382,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Vue/">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/hexo/">hexo</a><span class="tag-list-count">2</span></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/Vue/">Vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/blogs/tags/hexo/">hexo</a><span class="tag-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -338,7 +400,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/10/">October 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/10/">October 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/blogs/archives/2017/09/">September 2017</a><span class="archive-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -348,6 +410,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/blogs/2017/10/21/函数柯里化/">函数柯里化</a>
+          </li>
         
           <li>
             <a href="/blogs/2017/10/16/Babel简介及使用/">Babel简介及使用</a>
